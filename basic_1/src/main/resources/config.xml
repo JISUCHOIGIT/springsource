@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- spring bean : 스프링에서 생성한 후 관리하는 객체 / singleton으로 생성-->
+	<bean id="en" class="com.study.myapp.di.MessageEn"/>
+	<bean id="ko" class="com.study.myapp.di.MessageKo"/>
+	
+	<!-- new SonySpeaker() 개념 -->
+	<!-- <bean id="samTV" class="com.study.myapp.di.SamsungTV">
+		<constructor-arg ref="sony"/> 생성된 sony 객체를 생성자에게 주입
+	</bean>
+	 -->
+	 
+	<bean id="sony" class="com.study.myapp.di.SonySpeaker"/>
+	<bean id="apple" class="com.study.myapp.di.AppleSpeaker"/>
+	
+	<bean id="samsungTV" class="com.study.myapp.di.SamsungTV">
+		<property name="speaker" ref="apple"/> <!-- 생성된 sony 객체를 setter에게 주입 -->
+	</bean>
+	
+	<bean id="lgTv" class="com.study.myapp.di.LgTv">
+		<constructor-arg ref="sony"/>
+	</bean>
+</beans>
