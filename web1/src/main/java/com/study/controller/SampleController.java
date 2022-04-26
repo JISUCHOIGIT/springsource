@@ -15,7 +15,7 @@ import com.study.dto.UserDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Controller
+@Controller 
 @Slf4j
 @RequestMapping("/sample/*") // http://localhost:9090/sample/**
 public class SampleController {
