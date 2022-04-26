@@ -22,6 +22,7 @@ public class BoardDAO {
 	      String sql = "insert into spring_board(bno,title,content,writer) values(seq_board.nextval,?,?,?)";
 	      int result = 0;
 	      try {
+	    	  //바인딩
 	         con = getConnection();
 	         pstmt = con.prepareStatement(sql);
 	         pstmt.setString(1, insertDto.getTitle());
