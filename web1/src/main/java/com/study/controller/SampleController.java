@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,22 +37,27 @@ public class SampleController {
 	// @RequestMapping(path = "/login", method = RequestMethod.GET) => GET만 허용한다는 의믜
 	
 	
-	
+//	
 	@RequestMapping(path = "/basic", method = RequestMethod.GET) // http://localhost:9090/sample/basic => jsp 찾게 됨
-	public void basic() { //return : void => WEB-INF/view/sample/basic.jsp
+	public void basic(@ModelAttribute("page")int page, Model model) { //return : void => WEB-INF/view/sample/basic.jsp
 		log.info("basic...."); // WEB-INF/views/sapmle/basic.jsp
-	}
+		
+		//page 변수값을 jsp 보여주기 : Model
+		//model.addAttribute("page", page);
 	
-
-	//@RequestMapping(path = "/login", method = RequestMethod.GET) // http://localhost:9090/sample/login => jsp 찾게 됨
-	@GetMapping("/login")
-	public void login() { //return : void  => WEB-INF/view/sample/login.jsp
-		log.info("login....");
 	}
+//	
+	
+//
+//	//@RequestMapping(path = "/login", method = RequestMethod.GET) // http://localhost:9090/sample/login => jsp 찾게 됨
+//	@GetMapping("/login")
+//	public void login() { //return : void  => WEB-INF/view/sample/login.jsp
+//		log.info("login....");
+//	}
 	
 	//Controller 파라미터 수집
 	//① 변수명 사용
-	//② ~DTO 객체 사용
+	//② ~DTO 객체 사용 (jsp값 유지)
 	//③ HttpServletRequesst 객체 사용 / 객체 사용 잘 사용하지 않음(필요한 경우만-대부분 사용 잘 안함)
 	
 	
@@ -71,15 +78,15 @@ public class SampleController {
 //	}
 	
 	//③ HttpServletRequesst : 객체 사용 잘 사용하지 않음(필요한 경우만-대부분 사용 잘 안함)
-	@PostMapping("/login")
-	public void loginPost(HttpServletRequest request) {
-		String userid = request.getParameter("userid");
-		String password = request.getParameter("password");
-		String addr = request.getParameter("addr");
-		String age = request.getParameter("age");
-		log.info("loginPost...."+userid+" "+password+" "+addr+" "+age);
-
-	}
+//	@PostMapping("/login")
+//	public void loginPost(HttpServletRequest request) {
+//		String userid = request.getParameter("userid");
+//		String password = request.getParameter("password");
+//		String addr = request.getParameter("addr");
+//		String age = request.getParameter("age");
+//		log.info("loginPost...."+userid+" "+password+" "+addr+" "+age);
+//
+//	}
 	
 	//@RequestMapping(path = "/doA", method = RequestMethod.GET) // http://localhost:9090/sample/doA => jsp 찾게 됨
 	@GetMapping("doA")

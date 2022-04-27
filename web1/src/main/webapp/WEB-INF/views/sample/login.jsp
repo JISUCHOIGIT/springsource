@@ -18,14 +18,14 @@
 		<label for="password">password</label>
 		<input type="password" name="password" id="password" />
 	</div>
-	<div>
+<!-- <div>
 		<label for="addr">addr</label>
 		<input type="text" name="addr" id="addr" />
 	</div>
 	<div>
 		<label for="age">age</label>
 		<input type="text" name="age" id="age" />
-	</div>
+	</div> -->
 	<div>
 		<button type="submit">전송</button>
 	</div>
