@@ -37,7 +37,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public boolean bookUpdaet(int code, int price) {
+	public boolean bookUpdate(int code, int price) {
 		return mapper.update(code, price)==1?true:false;
 	}
 

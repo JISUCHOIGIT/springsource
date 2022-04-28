@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -74,4 +75,41 @@ public class BookController {
 		return "redirect:/book/delete";
 		
 	}
-}
+	
+	// 도서 수정 페이지 보여주기
+	@GetMapping("/update")
+	public void updateGet() {
+		log.info("도서 수정 페이지 보여주기");
+	}
+	
+	// 도서 수정 서비스
+	@PostMapping("/update")
+	public String updatePost(int code, int price) {
+		log.info("도서 수정 코드" + code + "도서 수정 가격" +price);
+		
+		if(service.bookUpdate(code, price)) {
+			return "redirect:/book/list";
+		}
+		return "redirect:/book/update";
+	}
+	
+	// 도서 검색 서비스
+	@GetMapping("/search")
+	public void searchGet() {
+		log.info("도서 검색 페이지 보여주기");
+	}
+	
+	@PostMapping("/search")
+	public String searchPost(String criteria, String keyword, Model model) {
+		log.info("도서 검색 정보" + criteria + " " + keyword);
+		
+		List<BookDTO> list = service.getSearchList(criteria, keyword);
+		
+		model.addAttribute("list",list);
+					
+		return "/book/list"; //controller get 방식(/book/list) 가기
+		
+		
+		}
+	}
+	

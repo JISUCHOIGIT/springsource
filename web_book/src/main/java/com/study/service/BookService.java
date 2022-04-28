@@ -11,6 +11,6 @@ public interface BookService {
 	public List<BookDTO> listAll();
 	public BookDTO selectOne(int code);
 	public List<BookDTO> getSearchList(String criteria, String keyword);
-	public boolean bookUpdaet(int code, int price);
+	public boolean bookUpdate(int code, int price);
 	public boolean bookDelete(int code);
 }

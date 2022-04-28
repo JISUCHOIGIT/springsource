@@ -33,10 +33,10 @@
         <a class="nav-link" href="/book/delete">도서삭제</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">도서검색</a>
+        <a class="nav-link" href="/book/search">도서검색</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">도서수정</a>
+        <a class="nav-link" href="/book/update">도서수정</a>
       </li>
     </ul>
   </div>
