@@ -17,22 +17,22 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                			<form action="" method="post" role="form">
+                			<form action="" method="post" role="form"> <!-- role 속성값 스크립트에서 지정 -->
                 				<div class="form-group">
                 					<label>Bno</label>
-                					<input class="form-control" name="bno" readonly="readonly">                				
+                					<input class="form-control" name="bno" readonly="readonly" value ="${dto.bno}">                				
                 				</div> 
                 				<div class="form-group">
                 					<label>Title</label>
-                					<input class="form-control" name="title">                				
+                					<input class="form-control" name="title" value ="${dto.title}">                				
                 				</div>  
                 				<div class="form-group">
                 					<label>Content</label>
-                					<textarea class="form-control" rows="3" name="content"></textarea>               				
+                					<textarea class="form-control" rows="3" name="content">${dto.content}</textarea>               				
                 				</div> 
                 				<div class="form-group">
                 					<label>Writer</label>
-                					<input class="form-control" name="writer" readonly="readonly">                				
+                					<input class="form-control" name="writer" readonly="readonly" value ="${dto.writer}">                				
                 				</div>  
                 				<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>              			
                 				<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>              			
@@ -43,6 +43,9 @@
                 </div>
             </div>
 			<%-- remove와 list를 위한 폼--%>
-
+			<form action="" id="operForm">
+				<input type="hidden" value="${dto.bno}" name="bno"/>
+			</form>
 			<%-- 스크립트 --%>
+			<script src="/resources/js/modify.js"></script>
 <%@include file="../includes/footer.jsp" %>       
