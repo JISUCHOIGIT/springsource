@@ -17,7 +17,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                			<form action="" role="form">
+                			<form action="" method ="post" role="form">
                 				<div class="form-group">
                 					<label>Bno</label>
                 					<input class="form-control" name="bno" readonly="readonly"  value ="${dto.bno}">                				
@@ -44,6 +44,10 @@
 <%-- modify 버튼 클릭 시 이동할 폼 --%>
 <form action="/board/modify" id="openForm">
 	<input type="hidden" value="${dto.bno}" name="bno"/>
+	<input type="hidden" value="${cri.pageNum}" name="pageNum"/>
+	<input type="hidden" value="${cri.amount}" name="amount"/>
+	<input type="hidden" value="${cri.keyword}" name="keyword"/>
+	<input type="hidden" value="${cri.type}" name="type"/>
 </form>
 <script src ="/resources/js/read.js"></script>           
 <%@include file="../includes/footer.jsp" %>       

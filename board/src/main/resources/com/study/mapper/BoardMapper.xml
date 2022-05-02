@@ -13,16 +13,48 @@
 		select bno,title,writer,regdate,updatedate
 		from(select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn, bno, title, writer, regdate, updatedate
 			from spring_board
-			where bno > 0 and rownum <= (#{pageNum} * #{amount}))
+			where 
+		]]>	
+			<include refid="criteria"></include>
+		<![CDATA[	
+			bno > 0 and rownum <= (#{pageNum} * #{amount}))
 		where rn > (#{pageNum} - 1) * #{amount}
 		
 	]]>
 	</select>
 	
 	<select id="totalCnt" resultType="int">
-		select count(*) from spring_board where bno > 0
+		select count(*) from spring_board where
+		
+		<include refid="criteria"></include>	
+		
+		 bno > 0
 	</select>
 	
+	<!-- 동적 sql -->
+	<sql id="criteria">
+	<!-- "(" suffix=") AND" : +(+ and를 쓰고 괄호를 닫아줘 +) 를 뜻함-->
+	<!-- prefixOverrides="OR" 맨 처음 where or 되는거 막아줘-->
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+		<!-- typeArr 배열형태를 받아서 반복 루프를 돌면서 -->
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+				<!-- type 태그를 만들면서 or를 붙여줘라 -->
+					<choose>
+						<when test="type=='T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='C'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='W'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 
 	<insert id = "register">
 		<!-- selectKey : 주로 pk 값을 미리 실행 한 후 특정 이름으로 보관 

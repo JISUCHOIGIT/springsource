@@ -14,5 +14,5 @@ public interface BoardService {
 	public boolean modify(int bno);
 	public boolean modifyUpdate(BoardDTO updateDto);
 	public boolean delete(int bno);
-	public int getTotalCnt();
+	public int getTotalCnt(Criteria cri);
 }

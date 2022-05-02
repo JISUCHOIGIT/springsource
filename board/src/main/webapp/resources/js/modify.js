@@ -7,7 +7,7 @@ $(function(){
 	let operForm = $("#operForm");
 	
 	$("button").click(function(e){
-		e.preventDefault(); //submti 막기
+		e.preventDefault(); //submit 막기
 		
 		//현재 눌러진 버튼의 data-값을 가져오기
 		//modify를 눌렀다면 this = modify
