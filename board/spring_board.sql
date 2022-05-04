@@ -61,7 +61,7 @@ where rn > (1-1) * 30;
 
 select * from spring_board where title like '%ke
 
-
+--
 
 
 

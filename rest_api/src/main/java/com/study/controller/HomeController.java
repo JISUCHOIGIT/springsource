@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,18 +32,22 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+		logger.info("Welcome home!");		
 		return "home";
 	}
 	
+	// 데이터만 전송할 경우
+	@GetMapping("/member/step2")
+	public void step2() { 
+		logger.info("회원가입 요청");	
+	}
+	
+	@GetMapping("/member/changePwd")
+	public void change(){
+		logger.info("회원수정요청");
+		
+	}
+
 	@ResponseBody //jsp 찾지마
 	@GetMapping("/test")
 	public String read() {
@@ -59,4 +64,6 @@ public class HomeController {
 	public ResponseEntity<SampleDTO> list(){
 		return new ResponseEntity<SampleDTO>(new SampleDTO("4321","kim","경기"),HttpStatus.OK);
 	}
+	
+	
 }

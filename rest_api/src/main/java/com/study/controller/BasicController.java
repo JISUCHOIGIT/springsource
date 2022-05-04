@@ -19,10 +19,11 @@ import com.sun.source.util.SimpleDocTreeVisitor;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+// 게시판 댓글 사용하기 위해 : 
 // return 하는 것들은 jsp가 아니다
-// return 하는 모든 것들은 데이터 그 자체
 @Slf4j
-@RestController
+@RestController // return 하는 모든 것들은 데이터 그 자체, 서버에 보낼 때 깜빡이지 않고 서버에서 바로 등록해서 보여주기 위해 필요
 public class BasicController {
 	
 	@GetMapping("/hello")
@@ -34,7 +35,7 @@ public class BasicController {
 	//② APPLICATION_XML_VALUE
 	// error : No converter : json으로 바꾸는건 알겠는데 중간에 바꿔주는 converter가 없다
 	 
-	public SampleDTO sendDTO() { //객체 자체를 던져서 사용할 수 있음
+	public SampleDTO sendDTO() { //객체 자체를 던져서 사용할 수 있음 // 객체 자체를 보내기 위해서는 컨버터가 필요
 		SampleDTO dto = new SampleDTO();
 		dto.setName("hong");
 		dto.setBno("123");
@@ -90,7 +91,7 @@ public class BasicController {
 	// ResponseEntity 타입 : Http 상태코드 + 데이터 : 객체만 보내는것이 아닌 데이터와 같이
 	// ex) 상태코드 : 404, 500, 406, 200(OK)
 	@GetMapping(path= "/check",produces = MediaType.APPLICATION_XML_VALUE)
-	public ResponseEntity<SampleDTO> check(Double height, Double weight) {
+	public ResponseEntity<SampleDTO> check(Double height, Double weight) { //추후 ajax사용
       
       SampleDTO dto = new SampleDTO("123",height+ "",weight+ "");
       
@@ -111,6 +112,7 @@ public class BasicController {
 
 	// @pathVariable : REST 방식은 URL이 가지고 있는 값을 정보로 사용하는 경우가 많음
 	// 				   URL 파라미터에 들어오는 값을 담을 수 있게 해줌
+	//				   반드시 사용해야 함
 	
 	@GetMapping(path = "/product/{cat}/{pid}",produces = MediaType.APPLICATION_XML_VALUE)
 	public String[] getPath(@PathVariable("cat") String cat, @PathVariable("pid") String pid){			
