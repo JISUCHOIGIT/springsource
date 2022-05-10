@@ -81,5 +81,3 @@ select * from spring_board where title like '%ke
 
 
 
-
-
