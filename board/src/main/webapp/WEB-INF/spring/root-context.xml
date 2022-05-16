@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-		<!-- @service 활성화 -->
+	<!-- @service 활성화 -->
 	<context:component-scan base-package="com.study.service"></context:component-scan>
 	
 	<!-- mybatis 인터페이스,매퍼 활성화 -->

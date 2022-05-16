@@ -113,7 +113,7 @@ public class BasicController {
 	// @pathVariable : REST 방식은 URL이 가지고 있는 값을 정보로 사용하는 경우가 많음
 	// 				   URL 파라미터에 들어오는 값을 담을 수 있게 해줌
 	//				   반드시 사용해야 함
-	
+	//@PathVariable 어노테이션을 이용해서 {템플릿 변수} 와 동일한 이름을 갖는 파라미터를 추가하면 됩니다.
 	@GetMapping(path = "/product/{cat}/{pid}",produces = MediaType.APPLICATION_XML_VALUE)
 	public String[] getPath(@PathVariable("cat") String cat, @PathVariable("pid") String pid){			
 		return new String[]{"category:"+cat, "product:"+pid};
